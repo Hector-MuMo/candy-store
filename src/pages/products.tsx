@@ -4,8 +4,8 @@ import MainLayout from '../components/layouts/MainLayout'
 import { FilterOutlined } from "@ant-design/icons"
 import ProductCard from '../components/Products/ProductCard'
 import productsList from "../productsList.json"
-import "../styles/ProductsPage.css"
 import Footer from '../components/Footer/Footer'
+import "../styles/ProductsPage.css"
 
 const { useBreakpoint } = Grid
 const { Sider, Content } = Layout
@@ -16,18 +16,7 @@ const ProductsPage = () => {
     return (
         <MainLayout>
 
-            <h1 className='text-3xl bg-orange-300 p-2 '>Products</h1>
-            {/*   {md
-                ?
-                <Layout className=' h-full'>
-                    <Sider style={{ backgroundColor: "white" }}>SideBar</Sider>
-                    <Content className='h-full overflow-scroll'>
-                        {productsList.map((product) =>
-                            <ProductCard key={product.id} product={product} />
-                        )}
-                    </Content>
-                </Layout>
-                : */}
+            <h1 className='text-3xl bg-orange-300 p-2 '>Productos</h1>
             <>
                 <Row align="middle" justify="center" wrap={true} className="bg-purple-300 py-2 m-0">
                     <Col>
