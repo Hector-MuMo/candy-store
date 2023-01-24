@@ -1,0 +1,21 @@
+.products-grid {
+    /*  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 5px;
+}
+
+.ant-card {
+    justify-self: center;
+    width: 300px;
+    height: fit-content;
+}
+
+.ant-card-cover {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+}
