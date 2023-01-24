@@ -26,7 +26,8 @@ const config: GatsbyConfig = {
             },
             __key: "images"
         },
-        'gatsby-plugin-postcss'
+        'gatsby-plugin-postcss',
+        'gatsby-plugin-netlify'
     ]
 };
 
