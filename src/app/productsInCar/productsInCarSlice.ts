@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-interface ProductsInCarState {
+interface ProductsInCarSelector {
     productsInCar: {
         productsList: Product[]
     }
+}
+
+interface ProductsInCarReducer {
+    productsList: Product[]
 }
 
 export const productsInCarSlice = createSlice({
@@ -12,21 +16,33 @@ export const productsInCarSlice = createSlice({
         productsList: []
     },
     reducers: {
-        addProduct: (state: any, action) => {
+        addProduct: (state: ProductsInCarReducer, action) => {
             const isProductInCar = state.productsList.find((product: Product) => product.id === action.payload.id ? true : false)
             if (!isProductInCar) {
                 state.productsList = [...state.productsList, action.payload]
             }
         },
-        deleteProduct: (state, action) => {
+        deleteProduct: (state: ProductsInCarReducer, action) => {
             const newCar = state.productsList.filter((product: Product) => product.id !== action.payload.id)
             state.productsList = newCar
+        },
+        updateBuyingAmount: (state: ProductsInCarReducer, action) => {
+            const updatedCar: Product[] = state.productsList.map((product: Product) => {
+                if (product.id === action.payload.id) {
+                    const updatedProduct = { ...product, buyingAmount: action.payload.amount }
+                    return updatedProduct
+                } else {
+                    return product
+                }
+            })
+
+            state.productsList = updatedCar
         }
     }
 })
 
-export const { addProduct, deleteProduct } = productsInCarSlice.actions
+export const { addProduct, deleteProduct, updateBuyingAmount } = productsInCarSlice.actions
 
-export const selectProductsInCar = (state: ProductsInCarState) => state.productsInCar.productsList
+export const selectProductsInCar = (state: ProductsInCarSelector) => state.productsInCar.productsList
 
 export default productsInCarSlice.reducer
