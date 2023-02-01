@@ -6,4 +6,5 @@ interface Product {
     price: string,
     category: string,
     img: string,
+    buyingAmount?: number
 }

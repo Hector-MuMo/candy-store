@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": "1a",
         "name": "Papas Kiubo Caseras Salsa Especial (Paq/10)",
         "description": "Papas adobadas caseras con la salsa especial de la casa",
         "brand": "Kiubo",
@@ -9,7 +9,7 @@
         "img": "https://dulceriasinaloa.com/wp-content/uploads/2022/08/Papas-Caseras-Salsa-Negra.jpg"
     },
     {
-        "id": "2",
+        "id": "2a",
         "name": "Banderilla Tama Roca 30 Piezas",
         "description": "Dulce de tamarindo natural con sal y chile. Bolsa con 30 piezas. Peso de la bolsa 1500 gramos.",
         "brand": "Tamaroca",
@@ -18,7 +18,7 @@
         "img": "https://www.holamexico.de/media/image/0a/3d/df/tamarinde-banderilla-tama-roca-800-g-20-stuck-45-004hm118_600x600.png"
     },
     {
-        "id": "3",
+        "id": "3a",
         "name": "Galleta Bocadin De Chocolate 50 Piezas",
         "description": "Galleta rellena con crema de cacahuate cubierta sabor a chocolate. Paquete de 50 piezas. Peso del paquete 525 gramos.",
         "brand": "Bimbo",
@@ -27,7 +27,7 @@
         "img": "https://esquinagonzalez.com.mx/wp-content/uploads/2021/03/IMG_9362.jpg"
     },
     {
-        "id": "4",
+        "id": "4a",
         "name": "Mini Paleta Payaso 15 Piezas",
         "description": "Paleta de malvavisco cubierta de chocolate, decorado con gomita de sabores. Display con 15 piezas. Peso de display 375 gramos.",
         "brand": "Ricolino",
