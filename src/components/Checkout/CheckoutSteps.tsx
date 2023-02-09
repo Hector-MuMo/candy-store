@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Button, message, Steps } from 'antd';
-import AddressForm from "../Forms/AddressForm"
+import { Divider, Steps } from 'antd';
+import UserInforForm from "../Forms/UserInfoForm"
 import DeliveryForm from '../Forms/DeliveryForm';
+import PayPalWrapper from './PayPalWrapper';
+import "../../styles/Navigation.css"
 
 interface CheckoutStepsProps {
-    deliverySelection: (value: string) => void
+    deliverySelection: (value: string) => void,
+    finalPrice: number
 }
 
-const CheckoutSteps = ({ deliverySelection }: CheckoutStepsProps) => {
+const CheckoutSteps = ({ deliverySelection, finalPrice }: CheckoutStepsProps) => {
     const [current, setCurrent] = useState(0);
 
     const next = () => {
@@ -18,22 +21,19 @@ const CheckoutSteps = ({ deliverySelection }: CheckoutStepsProps) => {
         setCurrent(current - 1);
     };
 
+
     const steps = [
         {
             title: 'Datos de Envío',
-            content: <AddressForm next={next} prev={prev} />,
+            content: <UserInforForm next={next} />,
         },
         {
             title: 'Tipo de Envío',
             content: <DeliveryForm next={next} prev={prev} deliverySelection={deliverySelection} />,
         },
         {
-            title: 'Pago',
-            content: 'Opciones de pago',
-        },
-        {
-            title: 'Confirmación',
-            content: 'Resumen y confirmación',
+            title: 'Resumen y Pago',
+            content: <PayPalWrapper amount={finalPrice.toString()} currency='MXN' prev={prev} />,
         },
     ];
 
@@ -41,11 +41,12 @@ const CheckoutSteps = ({ deliverySelection }: CheckoutStepsProps) => {
 
 
     return (
-        <div className='p-5'>
+        <div className='p-5 shadow-md rounded-lg'>
             <Steps current={current} items={items} direction="horizontal" />
-            <div className='border-sky-300 border-2 p-2 rounded-md'>{steps[current].content}</div>
+            <Divider />
+            <div className='max-w-screen-lg'>{steps[current].content}</div>
             {<div style={{ marginTop: 24 }}>
-                {current > 0 && (
+                {/* {current > 0 && (
                     <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                         Previous
                     </Button>
@@ -54,13 +55,7 @@ const CheckoutSteps = ({ deliverySelection }: CheckoutStepsProps) => {
                     <Button onClick={() => next()}>
                         Next
                     </Button>
-                )}
-                {current === steps.length - 1 && (
-                    <Button onClick={() => message.success('Processing complete!')}>
-                        Done
-                    </Button>
-                )}
-
+                )} */}
             </div>}
         </div>
     );

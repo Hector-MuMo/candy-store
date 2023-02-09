@@ -1,4 +1,6 @@
 node_modules/
 .cache/
 src/gatsby-types.d.ts
+.env
+.env.development
 

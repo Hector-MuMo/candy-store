@@ -60,6 +60,7 @@ export const Head: HeadFC = () => {
     return (
         <>
             <title>Home Page</title>
+            <script src="https://sdk.mercadopago.com/js/v2"></script>
         </>
     )
 }

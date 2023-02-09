@@ -1,3 +1,21 @@
+interface User {
+    name: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    address: Address
+    RFC?: string
+}
+
+interface Address {
+    street: string,
+    suburb: string,
+    zip: string
+    city: string,
+    state: string,
+    country?: string,
+}
+
 interface Product {
     id: string,
     name: string,

@@ -150,3 +150,21 @@ html {
         padding: 5px 10px;
     }
 }
+
+/* Steps Styles */
+
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
+    background: #fb923c;
+    border-color: #fb923c;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bef264;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon span {
+    color: #4d7c0f;
+}

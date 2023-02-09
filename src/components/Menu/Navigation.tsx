@@ -1,6 +1,6 @@
-import { Badge, Button, Space, Grid } from 'antd'
+import React, { useState } from 'react'
+import { Badge, Button, Space, Grid, notification } from 'antd'
 import Drawer from 'antd/es/drawer';
-import React, { useEffect, useState } from 'react'
 import MenuOptions from './MenuOptions';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import "../../styles/Navigation.css"
@@ -16,6 +16,7 @@ const Navigation = () => {
     const [isMenu, setIsMenu] = useState(true);
     const { md } = useBreakpoint()
     const productsInCar = useSelector(selectProductsInCar)
+    const [api, contextHolder] = notification.useNotification();
 
     const handleShowDrawer = () => {
         setShowDrawer(!showDrawer)
@@ -31,8 +32,25 @@ const Navigation = () => {
         setIsMenu(false)
     }
 
+    const handleBuy = () => {
+        if (productsInCar && productsInCar.length > 0) {
+            navigate("/checkout")
+        } else {
+            console.log("carrito vacio");
+
+            (() => {
+                api['warning']({
+                    message: '🛒 Carrito Vacío',
+                    description:
+                        'Agrega algunos productos a tu carrito para proceder al pago 🤗',
+                });
+            })();
+        }
+    }
+
     return (
         <nav className="menuBar bg-sky-300">
+            {contextHolder}
             <div className="logo">
                 <a href="">logo</a>
             </div>
@@ -77,7 +95,7 @@ const Navigation = () => {
             }
             <Drawer
                 width={320}
-                title={isMenu ? "Menú" : "Productos en tu carrito"}
+                title={isMenu ? "Menú" : "Productos en tu carrito 🛒"}
                 placement="right"
                 onClose={handleClose}
                 open={showDrawer}
@@ -85,7 +103,7 @@ const Navigation = () => {
                     isMenu ? null
                         :
                         <div className="flex justify-end">
-                            <Button className='bg-sky-300' onClick={() => navigate("/checkout")}>Completar compra</Button>
+                            <Button className='bg-sky-300' onClick={handleBuy}>Completar compra</Button>
                         </div>
                 }
             >

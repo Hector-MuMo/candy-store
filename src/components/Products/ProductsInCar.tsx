@@ -61,13 +61,17 @@ const ProductsInCar = () => {
                 <List.Item key={item.id} actions={[<ActionsList productid={item.id} onDelete={handleDeleteProduct} />]}>
                     <Skeleton avatar title={false} loading={false} active>
                         <List.Item.Meta
-                            avatar={<Avatar src={item.img} />}
+                            avatar={<Avatar size={64} src={item.img} />}
                             title={<Link to="/products">{item.name}</Link>}
                         />
                     </Skeleton>
                 </List.Item>
             )}
         >
+            {productsInCar && productsInCar.length < 1 ?
+                <p>No tienes productos agregados 💔</p>
+                : null
+            }
         </List>
     )
 }
