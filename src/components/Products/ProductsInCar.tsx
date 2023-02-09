@@ -57,10 +57,12 @@ const ProductsInCar = () => {
             rowKey={"id"}
             itemLayout="vertical"
             dataSource={productsInCar}
+            style={{ color: "#4d1227", fontFamily: "Bebas Neue, serif" }}
             renderItem={(item) => (
                 <List.Item key={item.id} actions={[<ActionsList productid={item.id} onDelete={handleDeleteProduct} />]}>
                     <Skeleton avatar title={false} loading={false} active>
                         <List.Item.Meta
+                            style={{ color: "#4d1227", fontFamily: "Bebas Neue, serif", }}
                             avatar={<Avatar size={64} src={item.img} />}
                             title={<Link to="/products">{item.name}</Link>}
                         />
@@ -69,7 +71,7 @@ const ProductsInCar = () => {
             )}
         >
             {productsInCar && productsInCar.length < 1 ?
-                <p>No tienes productos agregados 💔</p>
+                <p style={{ fontFamily: "Bebas Neue, serif", fontSize: "18px" }}>No tienes productos agregados 💔</p>
                 : null
             }
         </List>

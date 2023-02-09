@@ -58,10 +58,10 @@ const MenuOptions = () => {
 
     return (
         <Menu
-            mode={md ? "horizontal" : "vertical"}
+            mode={md ? "inline" : "vertical"}
             items={items}
             onClick={handleClick}
-            style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
+            style={{ color: "#c94f6a", fontSize: "1.1rem", fontFamily: "Bebas Neue, serif" }}
         />
     )
 }

@@ -3,11 +3,12 @@ import { Badge, Button, Space, Grid, notification } from 'antd'
 import Drawer from 'antd/es/drawer';
 import MenuOptions from './MenuOptions';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import "../../styles/Navigation.css"
 import ProductsInCar from '../Products/ProductsInCar';
 import { useSelector } from 'react-redux';
 import { selectProductsInCar } from "../../app/productsInCar/productsInCarSlice"
 import { navigate } from 'gatsby';
+import logo from "../../images/logotipo-variantes/Logo-horizontal-1.png"
+import "../../styles/Navigation.css"
 
 const { useBreakpoint } = Grid
 
@@ -49,10 +50,12 @@ const Navigation = () => {
     }
 
     return (
-        <nav className="menuBar bg-sky-300">
+        <nav className="menuBar bg-white">
             {contextHolder}
             <div className="logo">
-                <a href="">logo</a>
+                <a href="/">
+                    <img src={logo} alt="logo" />
+                </a>
             </div>
             {md ?
                 <div className='w-full flex justify-between items-center'>
@@ -99,6 +102,7 @@ const Navigation = () => {
                 placement="right"
                 onClose={handleClose}
                 open={showDrawer}
+                style={{ color: "#4d1227", fontFamily: "Bebas Neue, serif" }}
                 footer={
                     isMenu ? null
                         :
