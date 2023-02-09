@@ -62,7 +62,7 @@ const DeliveryForm = ({ next, prev, deliverySelection }: DeliveryFormProps) => {
                 <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                     Previous
                 </Button>
-                <Button onClick={() => next()}>
+                <Button className='bg-sky-300 text-white' onClick={() => next()}>
                     Next
                 </Button>
             </div>

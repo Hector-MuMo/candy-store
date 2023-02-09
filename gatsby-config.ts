@@ -27,7 +27,18 @@ const config: GatsbyConfig = {
             __key: "images"
         },
         'gatsby-plugin-postcss',
-        'gatsby-plugin-netlify'
+        'gatsby-plugin-netlify',
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [
+                    `Playfair Display pro\:300,400,400i,700`,
+                    `Bebas Neue`,
+                    `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+                ],
+                display: 'swap'
+            }
+        }
     ]
 };
 

@@ -23,7 +23,7 @@ html {
 }
 
 .logo {
-    width: 150px;
+    width: 200px;
     float: left;
 }
 
@@ -43,7 +43,12 @@ html {
     height: 32px;
     padding: 6px;
     display: inline;
-    background: white;
+    background-image: url(../images/logotipo-variantes/Menu.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    box-shadow: none;
 }
 
 .carMenu {
@@ -53,14 +58,15 @@ html {
     padding: 6px;
     background: white;
     font-size: 1.2rem;
-    color: #1890ff;
+    color: #4d1227;
 }
 
 .barsBtn {
     display: block !important;
+    visibility: hidden;
     width: 20px;
     height: 2px;
-    background: #1890ff;
+    background: white;
     position: relative;
 }
 
@@ -72,7 +78,7 @@ html {
     top: -6px;
     left: 0;
     height: 2px;
-    background: #1890ff;
+    background: white;
 }
 
 .barsBtn:after {
@@ -103,6 +109,7 @@ html {
 }
 
 @media (min-width: 767px) {
+
     .barsMenu {
         display: none;
     }
@@ -115,10 +122,8 @@ html {
     }
 
     .menuCon .rightMenu {
-        display: block;
-        margin: auto;
-        overflow: hidden;
-        border-radius: 10px;
+        display: flex;
+        width: 580px;
     }
 
     .rightMenu>ul {
@@ -128,25 +133,39 @@ html {
         align-items: center;
         height: 50px;
         background: none;
-
     }
 
     .rightMenu li {
-        background-color: white;
-        border-radius: 10px;
-        padding: 5px 10px !important;
-    }
 
-    .logo a {
-        margin-left: -20px;
+        background-color: white;
+        padding: 5px 5px !important;
     }
 
     .menuCon .ant-menu-item,
     .menuCon .ant-menu-submenu-title {
-        padding: 1px 20px;
+        width: 100%;
+        padding: 1px 25px;
     }
 
     .logo a {
         padding: 5px 10px;
     }
+}
+
+/* Steps Styles */
+
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
+    background: #fb923c;
+    border-color: #fb923c;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bef264;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon span {
+    color: #4d7c0f;
 }

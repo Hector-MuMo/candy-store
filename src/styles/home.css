@@ -1,0 +1,88 @@
+.bannerMam,
+.bannerCaesar,
+.bannerNose,
+.bannerNami {
+    z-index: 10;
+    height: 425px;
+    background-image: url(../images/logotipo-variantes/Cel-banner1.png);
+
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bannerCaesar {
+    background-image: url(../images/logotipo-variantes/Cel-banner2.png);
+}
+
+.bannerNose {
+    background-image: url(../images/logotipo-variantes/Cel-banner3.png);
+}
+
+.bannerNami {
+    background-image: url(../images/logotipo-variantes/Cel-banner4.png);
+}
+
+.home-categories {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+    grid-template-rows: repeat(3, minmax(80px, 1fr));
+    gap: 8px;
+    padding: .8rem 2rem .5rem 2rem;
+    z-index: 10;
+}
+
+.home-categories>* {
+    background-color: #4d1227;
+}
+
+.home-footer {
+    width: 280px;
+    min-height: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, minmax(20px, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 767px) {
+
+    .bannerMam,
+    .bannerCaesar,
+    .bannerNose,
+    .bannerNami {
+        z-index: 10;
+        height: 643px;
+        background-image: url(../images/logotipo-variantes/Web-grande-banner1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .bannerCaesar {
+        background-image: url(../images/logotipo-variantes/Web-grande-banner2.png);
+    }
+
+    .bannerNose {
+        background-image: url(../images/logotipo-variantes/Web-grande-banner3.png);
+    }
+
+    .bannerNami {
+        background-image: url(../images/logotipo-variantes/Web-grande-banner4.png);
+    }
+
+    .home-categories {
+        width: 500px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+        grid-template-rows: repeat(2, minmax(80px, 1fr));
+        gap: 8px;
+        padding: .8rem 2rem .5rem 2rem;
+        z-index: 10;
+    }
+
+    .home-footer {
+        width: auto;
+        min-width: 150px;
+        max-width: 300px;
+    }
+}
