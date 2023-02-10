@@ -30,7 +30,7 @@
 .carousel-title-2,
 .carousel-title-3,
 .carousel-title-4 {
-    color: #c94f6a;
+
     font-family: "Playfair Display", serif;
     font-weight: 800;
     font-size: 38px;
@@ -39,12 +39,16 @@
     text-align: center;
 }
 
+.carousel-title-1 {
+    color: #c94f6a !important;
+}
+
 .carousel-title-2 {
-    color: #a44eae;
+    color: #a44eae !important;
 }
 
 .carousel-title-3 {
-    color: #955270;
+    color: #955270 !important;
 }
 
 .carousel-title-4 {
