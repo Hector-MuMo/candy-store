@@ -18,14 +18,26 @@ const IndexPage: React.FC<PageProps> = () => {
         <MainLayout >
             <Row>
                 <Col span={24} >
-                    <Carousel autoplay >
-                        <div className="bannerMam">
+                    <Carousel >
+                        <div className="bannerMam relative">
+                            <Title className="carousel-title-1">
+                                LOS MEJORES DULCES DE LOS 4 MARES
+                            </Title>
                         </div>
-                        <div className="bannerCaesar bg-center">
+                        <div className="bannerCaesar relative">
+                            <Title className="carousel-title-2">
+                                DULCES QUE TE HARAN SENTIR EN OTRO MUNDO
+                            </Title>
                         </div>
-                        <div className="bannerNose bg-center">
+                        <div className="bannerNose relative">
+                            <Title className="carousel-title-3">
+                                LA FUERZA COMBINADA CON LA DULZURA
+                            </Title>
                         </div>
-                        <div className="bannerNami bg-center">
+                        <div className="bannerNami relative">
+                            <Title className="carousel-title-4">
+                                EL LADO TIERNO DE LOS DULCES
+                            </Title>
                         </div>
                     </Carousel>
                 </Col>
@@ -124,7 +136,7 @@ const IndexPage: React.FC<PageProps> = () => {
                                 </Title>
                             </Row>
                         </Col>
-                        <Col span={14}>
+                        <Col span={14} className="m-auto ">
                             <Row className="m-auto">
                                 <section className="home-categories">
                                     <div></div>
@@ -165,24 +177,40 @@ const IndexPage: React.FC<PageProps> = () => {
                 }
             </Row>
 
-            {md ?
-                <Row justify="center" className=" p-3" style={{ backgroundColor: "#4d1227" }}>
-                    <Col >
-                        <section className="home-footer">
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white"></div>
-                        </section>
-                    </Col>
-                    <Col >
-                        <figure className="w-[250px] mx-16">
+            {
+                md ?
+                    <Row justify="center" className=" p-3" style={{ backgroundColor: "#4d1227" }}>
+                        <Col >
+                            <section className="home-footer">
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white"></div>
+                            </section>
+                        </Col>
+                        <Col >
+                            <figure className="w-[250px] mx-16">
+                                <img src={IconFooter} alt="icon-footer" />
+                            </figure>
+                        </Col>
+                        <Col >
+                            <section className="home-footer">
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white "></div>
+                                <div className="bg-white"></div>
+                            </section>
+                        </Col>
+                    </Row>
+                    :
+                    <Row className="flex flex-col items-center p-3" style={{ backgroundColor: "#4d1227" }}>
+                        <figure className="w-[100px] mx-3 mb-5">
                             <img src={IconFooter} alt="icon-footer" />
                         </figure>
-                    </Col>
-                    <Col >
                         <section className="home-footer">
                             <div className="bg-white "></div>
                             <div className="bg-white "></div>
@@ -191,24 +219,9 @@ const IndexPage: React.FC<PageProps> = () => {
                             <div className="bg-white "></div>
                             <div className="bg-white"></div>
                         </section>
-                    </Col>
-                </Row>
-                :
-                <Row className="flex flex-col items-center p-3" style={{ backgroundColor: "#4d1227" }}>
-                    <figure className="w-[100px] mx-3 mb-5">
-                        <img src={IconFooter} alt="icon-footer" />
-                    </figure>
-                    <section className="home-footer">
-                        <div className="bg-white "></div>
-                        <div className="bg-white "></div>
-                        <div className="bg-white "></div>
-                        <div className="bg-white "></div>
-                        <div className="bg-white "></div>
-                        <div className="bg-white"></div>
-                    </section>
-                </Row>
+                    </Row>
             }
-        </MainLayout>
+        </MainLayout >
     )
 }
 
