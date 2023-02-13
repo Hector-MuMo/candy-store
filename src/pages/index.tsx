@@ -4,7 +4,7 @@ import MainLayout from "../components/layouts/MainLayout"
 import { Carousel, Col, Row, Grid, Typography } from 'antd';
 import Zeus from "../images/logotipo-variantes/Zeus.png"
 import Prometheus from "../images/logotipo-variantes/Prometheus.png"
-import IconFooter from "../images/logotipo-variantes/Big-mom-blanco-footer.png"
+import Footer from "../components/Footer/Footer";
 import "../styles/home.css"
 
 
@@ -177,50 +177,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 }
             </Row>
 
-            {
-                md ?
-                    <Row justify="center" className=" p-3" style={{ backgroundColor: "#4d1227" }}>
-                        <Col >
-                            <section className="home-footer">
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white"></div>
-                            </section>
-                        </Col>
-                        <Col >
-                            <figure className="w-[250px] mx-16">
-                                <img src={IconFooter} alt="icon-footer" />
-                            </figure>
-                        </Col>
-                        <Col >
-                            <section className="home-footer">
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white "></div>
-                                <div className="bg-white"></div>
-                            </section>
-                        </Col>
-                    </Row>
-                    :
-                    <Row className="flex flex-col items-center p-3" style={{ backgroundColor: "#4d1227" }}>
-                        <figure className="w-[100px] mx-3 mb-5">
-                            <img src={IconFooter} alt="icon-footer" />
-                        </figure>
-                        <section className="home-footer">
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white "></div>
-                            <div className="bg-white"></div>
-                        </section>
-                    </Row>
-            }
+            <Footer />
         </MainLayout >
     )
 }

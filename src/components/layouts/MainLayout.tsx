@@ -10,7 +10,7 @@ const MainLayout = ({ children }: { children?: React.ReactNode }) => {
 
         <Layout className='min-h-screen relative'>
             <Navigation />
-            <Content className='relative h-full bg-white'>
+            <Content className='main-container relative bg-white' style={{ fontFamily: "Bebas Neue, serif" }}>
                 {children}
             </Content>
         </Layout>

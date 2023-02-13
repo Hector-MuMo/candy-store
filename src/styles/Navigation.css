@@ -5,9 +5,9 @@ html {
 }
 
 
-/* .main-container {
-    min-height: calc(100vh - 64px);
-} */
+.main-container {
+    min-height: calc(100vh - 60px);
+}
 
 .ant-layout .ant-layout-header {
     padding: 0;
