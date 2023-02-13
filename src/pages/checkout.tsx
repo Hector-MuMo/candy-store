@@ -7,6 +7,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import { calculateSubtotalInCar, calculateTotalProduct, calculateTotal } from '../assets/utils/calculationInCar'
 import CheckoutSteps from '../components/Checkout/CheckoutSteps'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
+import Logo from "../images/logotipo-variantes/Main-2.png"
 
 const { useBreakpoint } = Grid
 const { Panel } = Collapse;
@@ -50,7 +51,9 @@ const CheckoutPage = () => {
                         <Col span={16} className="flex flex-col items-center">
                             <div style={{ margin: "0 1rem 0 1rem", maxWidth: "1024px" }}>
                                 <Row justify="center" className=' py-5'>
-                                    Logo de Tienda
+                                    <figure className='w-[200px] bg-rose-300 rounded-full p-2'>
+                                        <img src={Logo} alt="logo" />
+                                    </figure>
                                 </Row>
                                 <CheckoutSteps deliverySelection={handleDeliverySelection} finalPrice={totalPrice} />
                                 <Row justify="start">
@@ -114,7 +117,9 @@ const CheckoutPage = () => {
                     :
                     <div style={{ height: "100vh" }}>
                         <Row className='py-5' justify="center">
-                            Logo de Tienda
+                            <figure className='w-[120px] bg-rose-300 rounded-full p-2'>
+                                <img src={Logo} alt="logo" />
+                            </figure>
                         </Row>
                         <Row justify="center">
                             <Col className="flex flex-col items-center w-11/12">
