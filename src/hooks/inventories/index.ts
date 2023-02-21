@@ -1,7 +1,6 @@
 import axios from "axios"
 
-
-const productsApi = () => {
+const inventoriesApi = () => {
 
     const api = axios.create({
         baseURL: process.env.GATSBY_API_URL ?? "https://aquinoes.com"
@@ -12,14 +11,14 @@ const productsApi = () => {
         page = page ?? 0
         limit = limit ?? 10
 
-        return api.get(`/products?page=${page}&limit=${limit}`)
+        return api.get(`/inventories?page=${page}&limit=${limit}`)
     }
 
-    const getOne = (productId: string) => {
-        return api.get(`/products/${productId}`)
+    const getOne = (inventoryId: string) => {
+        return api.get(`/inventories/${inventoryId}`)
     }
 
     return { getAll, getOne }
 }
 
-export default productsApi
+export default inventoriesApi
