@@ -51,9 +51,11 @@ const CheckoutPage = () => {
                         <Col span={16} className="flex flex-col items-center">
                             <div style={{ margin: "0 1rem 0 1rem", maxWidth: "1024px" }}>
                                 <Row justify="center" className=' py-5'>
-                                    <figure className='w-[200px] bg-rose-300 rounded-full p-2'>
-                                        <img src={Logo} alt="logo" />
-                                    </figure>
+                                    <Link to="/">
+                                        <figure className='w-[200px] bg-rose-300 rounded-full p-2'>
+                                            <img src={Logo} alt="logo" />
+                                        </figure>
+                                    </Link>
                                 </Row>
                                 <CheckoutSteps deliverySelection={handleDeliverySelection} finalPrice={totalPrice} />
                                 <Row justify="start">
@@ -76,7 +78,7 @@ const CheckoutPage = () => {
                                             <List.Item.Meta
                                                 avatar={
                                                     <Badge count={item.buyingAmount}>
-                                                        <Avatar size={64} src={item.img} />
+                                                        <Avatar size={64} src={item.imgs[0]} />
                                                     </Badge>
                                                 }
                                                 title={<Link to={`/products/${item.id}`}>{item.name}</Link>}
@@ -146,7 +148,7 @@ const CheckoutPage = () => {
                                                     <List.Item.Meta
                                                         avatar={
                                                             <Badge count={item.buyingAmount}>
-                                                                <Avatar size={64} src={item.img} />
+                                                                <Avatar size={64} src={item.imgs[0]} />
                                                             </Badge>
                                                         }
                                                         title={<Link to={`/products/${item.id}`}>{item.name}</Link>}

@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-import { Button, Card } from 'antd'
+import React from 'react'
+import { Button, Card, notification } from 'antd'
 import { PlusOutlined } from "@ant-design/icons"
-import { getId } from "../../app/product/productSlice"
-import { selectProductId } from "../../app/product/productSlice"
+import { selectProductsInCar } from "../../app/productsInCar/productsInCarSlice"
 import { useDispatch, useSelector } from 'react-redux'
 import { addProduct, updateBuyingAmount } from "../../app/productsInCar/productsInCarSlice"
-import productsList from "../../productsList.json"
 import { Link } from "gatsby"
 
 const { Meta } = Card
@@ -15,33 +13,47 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-    const productId = useSelector(selectProductId)
+    const productsList = useSelector(selectProductsInCar)
+    const [api, contextHolder] = notification.useNotification();
     const dispatch = useDispatch()
 
     const handleAddProduct = () => {
-        dispatch(getId(product.id))
+        const updatedProduct = { ...product, buyingAmount: 1 }
+        dispatch(addProduct(updatedProduct))
+
+        const isProductInCar = productsList.find(item => item.id === product.id ? true : false)
+
+        if (isProductInCar) {
+            (() => {
+                api['warning']({
+                    message: '🛒 Producto en carrito',
+                    description:
+                        'El producto ya está en el carrito. Prueba agregando algún otro 🤗',
+                });
+            })();
+        }
     }
 
-    useEffect(() => {
-        //Add product logic - Find the product on the list of products and if is in it add new product through redux action
-        let newProduct: Product | undefined = productsList.find(product => product.id === productId)
-        if (newProduct) {
-            newProduct = { ...newProduct, buyingAmount: 1 }
-            dispatch(addProduct(newProduct))
-        }
-    }, [productId]);
-
     return (
-        <Card
-            key={product.id}
-            cover={<img style={{ width: "150px" }} src={product.img} alt={product.name} />}
-            actions={[
-                <Button icon={<PlusOutlined />} onClick={handleAddProduct}>Agregar al carrito</Button>
-            ]}
-            title={<Link to={`/products/${product.id}`}>{product.name}</Link>}
-        >
-            <Meta title={`$${product.price}`} description={product.category} />
-        </Card>
+        <>
+            {contextHolder}
+            {product ?
+                <Card
+                    key={product.id}
+                    cover={<img style={{ width: "150px" }} src={product.imgs[0]} alt={product.name} />}
+                    actions={[
+                        <Button icon={<PlusOutlined />} onClick={handleAddProduct}>Agregar al carrito</Button>
+                    ]}
+                    title={<Link to={`/products/${product.id}`}>{product.name}</Link>}
+                >
+                    <Meta title={`$${product.price}`} description={product.category} />
+                </Card>
+                :
+                <Card title="Error al cargar el producto :c">
+
+                </Card>
+            }
+        </>
     )
 }
 

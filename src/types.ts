@@ -23,6 +23,6 @@ interface Product {
     brand: string,
     price: string,
     category: string,
-    img: string,
+    imgs: string[],
     buyingAmount?: number
 }

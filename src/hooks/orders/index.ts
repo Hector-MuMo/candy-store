@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const productsApi = () => {
+const ordersApi = () => {
 
     const api = axios.create({
         baseURL: process.env.GATSBY_API_URL ?? "https://aqui.com"
@@ -12,14 +12,14 @@ const productsApi = () => {
         page = page ?? 0
         limit = limit ?? 10
 
-        return api.get(`/products?page=${page}&limit=${limit}`)
+        return api.get(`/orders?page=${page}&limit=${limit}`)
     }
 
     const getOne = (productId: string) => {
-        return api.get(`/products/${productId}`)
+        return api.get(`/orders/${productId}`)
     }
 
     return { getAll, getOne }
 }
 
-export default productsApi
+export default ordersApi

@@ -6,7 +6,9 @@
         "brand": "Kiubo",
         "price": "80",
         "category": "papas",
-        "img": "https://i.postimg.cc/pTFcRbRL/kiubo-negra2.png"
+        "imgs": [
+            "https://i.postimg.cc/pTFcRbRL/kiubo-negra2.png"
+        ]
     },
     {
         "id": "2a",
@@ -15,7 +17,9 @@
         "brand": "Tamaroca",
         "price": "179.10",
         "category": "Picoso",
-        "img": "https://www.holamexico.de/media/image/0a/3d/df/tamarinde-banderilla-tama-roca-800-g-20-stuck-45-004hm118_600x600.png"
+        "imgs": [
+            "https://www.holamexico.de/media/image/0a/3d/df/tamarinde-banderilla-tama-roca-800-g-20-stuck-45-004hm118_600x600.png"
+        ]
     },
     {
         "id": "3a",
@@ -24,7 +28,9 @@
         "brand": "Bimbo",
         "price": "69.40",
         "category": "chocolates",
-        "img": "https://esquinagonzalez.com.mx/wp-content/uploads/2021/03/IMG_9362.jpg"
+        "imgs": [
+            "https://esquinagonzalez.com.mx/wp-content/uploads/2021/03/IMG_9362.jpg"
+        ]
     },
     {
         "id": "4a",
@@ -33,6 +39,8 @@
         "brand": "Ricolino",
         "price": "86.40",
         "category": "paletas",
-        "img": "https://i0.wp.com/xn--piatamonde-u9a.com/wp-content/uploads/2020/08/Ricolino-Paleta-Payaso-Display-Mini.png"
+        "imgs": [
+            "https://i0.wp.com/xn--piatamonde-u9a.com/wp-content/uploads/2020/08/Ricolino-Paleta-Payaso-Display-Mini.png"
+        ]
     }
 ]
