@@ -38,7 +38,24 @@ const config: GatsbyConfig = {
                 ],
                 display: 'swap'
             }
-        }
+        },
+        {
+            resolve: `gatsby-omni-font-loader`,
+            options: {
+                enableListener: true,
+                preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+                web: [
+                    {
+                        name: `Bebas Neue`,
+                        file: `https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap`,
+                    },
+                    {
+                        name: `Playfair Display`,
+                        file: `https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&display=swap`,
+                    },
+                ],
+            },
+        },
     ]
 };
 

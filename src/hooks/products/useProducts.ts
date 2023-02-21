@@ -3,7 +3,7 @@ import productsApi from '.';
 
 const useProducts = (page?: number, limit?: number) => {
     const [products, setProducts] = React.useState([]);
-    const [product, setProduct] = React.useState({});
+    const [product, setProduct] = React.useState<Product>();
     const [isLoading, setIsLoading] = React.useState(false);
     const [errors, setErrors] = React.useState({
         productsError: "",
@@ -15,11 +15,13 @@ const useProducts = (page?: number, limit?: number) => {
             setIsLoading(true)
             const result = await productsApi().getAll(page, limit)
             if (result.data) {
-                setProducts(result.data.products)
+                setProducts(result.data)
             }
         } catch (error: any) {
             console.log(error)
             setErrors({ ...errors, productsError: error })
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -33,6 +35,8 @@ const useProducts = (page?: number, limit?: number) => {
         } catch (error: any) {
             console.log(error)
             setErrors({ ...errors, productError: error })
+        } finally {
+            setIsLoading(false)
         }
     }
 

@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import { useSelector, useDispatch } from "react-redux"
 import { selectProductId, selectProductAmount } from "../../app/product/productSlice"
 import { deleteProduct, selectProductsInCar, updateBuyingAmount } from "../../app/productsInCar/productsInCarSlice"
-import productsList from "../../productsList.json"
 
 interface ActionsListProps {
     productid: string
@@ -12,9 +11,9 @@ interface ActionsListProps {
 }
 
 const ActionsList = ({ productid, onDelete }: ActionsListProps) => {
-    const [totalItems, setTotalItems] = useState<number | null>(1);
-    const productAmount = useSelector(selectProductAmount)
+    const productsInCar = useSelector(selectProductsInCar)
     const reduxProductId = useSelector(selectProductId)
+    const [totalItems, setTotalItems] = useState<number | null>(1);
     const dispatch = useDispatch()
 
     const handleAmountProduct = (amount: number | null) => {
@@ -28,10 +27,13 @@ const ActionsList = ({ productid, onDelete }: ActionsListProps) => {
     }
 
     useEffect(() => {
-        if (productid === reduxProductId) {
-            setTotalItems(productAmount)
+        const product = productsInCar.find(product => product.id === productid)
+        if (product && product.buyingAmount) {
+            setTotalItems(product.buyingAmount)
+        } else {
+            setTotalItems(1)
         }
-    }, [productAmount, reduxProductId]);
+    }, [productsInCar]);
 
     return (
         <div>
@@ -46,7 +48,7 @@ const ProductsInCar = () => {
     const dispatch = useDispatch()
 
     const handleDeleteProduct = (productId: string) => {
-        const productToDelete = productsList.find(product => product.id === productId)
+        const productToDelete = productsInCar.find(product => product.id === productId)
 
         if (productToDelete)
             dispatch(deleteProduct(productToDelete))
@@ -63,8 +65,8 @@ const ProductsInCar = () => {
                     <Skeleton avatar title={false} loading={false} active>
                         <List.Item.Meta
                             style={{ color: "#4d1227", fontFamily: "Bebas Neue, serif", }}
-                            avatar={<Avatar size={64} src={item.img} />}
-                            title={<Link to="/products">{item.name}</Link>}
+                            avatar={<Avatar size={64} src={item.imgs[0]} />}
+                            title={<Link to={`/products/${item.id}`} >{item.name}</Link>}
                         />
                     </Skeleton>
                 </List.Item>

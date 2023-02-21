@@ -6,7 +6,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import ProductsInCar from '../Products/ProductsInCar';
 import { useSelector } from 'react-redux';
 import { selectProductsInCar } from "../../app/productsInCar/productsInCarSlice"
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import logo from "../../images/logotipo-variantes/Logo-horizontal-1.png"
 import "../../styles/Navigation.css"
 
@@ -50,12 +50,12 @@ const Navigation = () => {
     }
 
     return (
-        <nav className="menuBar bg-white">
+        <nav className="sticky top-0 z-50 menuBar bg-white border-b-2 border-sky-300">
             {contextHolder}
             <div className="logo">
-                <a href="/">
+                <Link to="/">
                     <img src={logo} alt="logo" />
-                </a>
+                </Link>
             </div>
             {md ?
                 <div className='w-full flex justify-between items-center'>

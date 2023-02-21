@@ -18,7 +18,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <MainLayout >
             <Row>
                 <Col span={24} >
-                    <Carousel >
+                    <Carousel autoplay>
                         <div className="bannerMam relative">
                             <Title className="carousel-title-1">
                                 LOS MEJORES DULCES DE LOS 4 MARES
