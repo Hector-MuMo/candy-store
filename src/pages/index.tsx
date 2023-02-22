@@ -5,6 +5,14 @@ import { Carousel, Col, Row, Grid, Typography } from 'antd';
 import Zeus from "../images/logotipo-variantes/Zeus.png"
 import Prometheus from "../images/logotipo-variantes/Prometheus.png"
 import Footer from "../components/Footer/Footer";
+import loader from "../images/logotipo-variantes/op-loader.gif"
+import useProducts from "../hooks/products/useProducts";
+import chocolateCat from "../images/categories/Coleccion-Chocolates.png"
+import botanasCat from "../images/categories/Coleccion-Botanas.png"
+import chiclesCat from "../images/categories/Coleccion-Chicles.png"
+import bombonesCat from "../images/categories/Coleccion-Bombones.png"
+import galletasCat from "../images/categories/Coleccion-Galletas.png"
+import paletasCat from "../images/categories/Coleccion-Paletas.png"
 import "../styles/home.css"
 
 
@@ -13,35 +21,53 @@ const { Title } = Typography
 
 const IndexPage: React.FC<PageProps> = () => {
     const { md } = useBreakpoint()
+    const { products } = useProducts(0, 10)
+    const [loadingCarousel, setLoadingCarousel] = React.useState(true);
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoadingCarousel(false)
+        }, 5500);
+
+        return () => clearTimeout(timer)
+    }, []);
 
     return (
         <MainLayout >
-            <Row>
-                <Col span={24} >
-                    <Carousel autoplay>
-                        <div className="bannerMam relative">
-                            <Title className="carousel-title-1">
-                                LOS MEJORES DULCES DE LOS 4 MARES
-                            </Title>
-                        </div>
-                        <div className="bannerCaesar relative">
-                            <Title className="carousel-title-2">
-                                DULCES QUE TE HARAN SENTIR EN OTRO MUNDO
-                            </Title>
-                        </div>
-                        <div className="bannerNose relative">
-                            <Title className="carousel-title-3">
-                                LA FUERZA COMBINADA CON LA DULZURA
-                            </Title>
-                        </div>
-                        <div className="bannerNami relative">
-                            <Title className="carousel-title-4">
-                                EL LADO TIERNO DE LOS DULCES
-                            </Title>
-                        </div>
-                    </Carousel>
-                </Col>
-            </Row>
+            {
+                loadingCarousel ?
+                    <Row className="my-10" align="middle" justify="center">
+                        <img className="rounded-lg" src={loader} alt="loader" />
+                    </Row>
+                    :
+                    <Row>
+                        <Col span={24} >
+                            <Carousel autoplay>
+                                <div className="bannerMam relative">
+                                    <Title className="carousel-title-1">
+                                        LOS MEJORES DULCES DE LOS 4 MARES
+                                    </Title>
+                                </div>
+                                <div className="bannerCaesar relative">
+                                    <Title className="carousel-title-2">
+                                        DULCES QUE TE HARAN SENTIR EN OTRO MUNDO
+                                    </Title>
+                                </div>
+                                <div className="bannerNose relative">
+                                    <Title className="carousel-title-3">
+                                        LA FUERZA COMBINADA CON LA DULZURA
+                                    </Title>
+                                </div>
+                                <div className="bannerNami relative">
+                                    <Title className="carousel-title-4">
+                                        EL LADO TIERNO DE LOS DULCES
+                                    </Title>
+                                </div>
+                            </Carousel>
+                        </Col>
+                    </Row>
+            }
+
             <Row className="pb-5">
                 <Col className="m-auto">
                     <Row className="items-center" justify="center">
@@ -54,68 +80,44 @@ const IndexPage: React.FC<PageProps> = () => {
                             <img src={Zeus} alt="cloud" />
                         </figure>
                     </Row>
-                    <Row justify="center">
-                        {md ?
-                            <>
+                    <Row justify="center" >
+                        <>
+                            {products
+                                ?
+                                products.slice(0, (md ? 4 : 2)).map((product: Product) => {
+                                    return (
+                                        <div className="max-w-[150px] flex flex-col items-center my-3 text-center mx-3">
+                                            <figure className="flex items-center p-5 mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "white", border: "10px solid #4d1227", color: "white", borderRadius: "50%" }}>
+                                                <img src={product.imgs[0]} alt={product.name} />
+                                            </figure>
+                                            <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">
+                                                {product.name}
+                                            </p>
+                                            <div className="m-auto w-[100px]">
+                                                <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >
+                                                    {product.brand}
+                                                </span>
+                                                <p className="bg-green-300 text-white p-2">
+                                                    ${product.price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                :
                                 <div className="flex flex-col items-center my-3 text-center mx-3">
                                     <figure className="mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
+                                        <img src="" alt="" />
                                     </figure>
-                                    <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
+                                    <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Productos No disponibles</p>
                                     <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
+                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >No disponible</span>
+                                        <p className="bg-green-300 text-white p-2">$0.00</p>
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-center my-3  text-center mx-3">
-                                    <figure className="mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
-                                    </figure>
-                                    <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
-                                    <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-center my-3 text-center mx-3">
-                                    <figure className="mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
-                                    </figure>
-                                    <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
-                                    <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-center my-3  text-center mx-3">
-                                    <figure className="mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
-                                    </figure>
-                                    <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
-                                    <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
-                                    </div>
-                                </div>
-                            </>
-                            :
-                            <>
-                                <div className="flex flex-col items-center my-3 text-center mx-3">
-                                    <figure className="mb-2 w-[100px] h-[100px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
-                                    </figure>
-                                    <p style={{ backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
-                                    <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-center my-3  text-center mx-3">
-                                    <figure className="mb-2 w-[100px] h-[100px]" style={{ backgroundColor: "#4d1227", color: "white", borderRadius: "50%" }}>
-                                    </figure>
-                                    <p style={{ backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">Nombre producto</p>
-                                    <div className="m-auto w-[100px]">
-                                        <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >Marca</span>
-                                        <p className="bg-green-300 text-white p-2">Precio</p>
-                                    </div>
-                                </div>
-                            </>
-                        }
+                            }
+                        </>
+
                     </Row>
                 </Col>
             </Row>
@@ -139,12 +141,24 @@ const IndexPage: React.FC<PageProps> = () => {
                         <Col span={14} className="m-auto ">
                             <Row className="m-auto">
                                 <section className="home-categories">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                    <div className="p-3">
+                                        <img src={chocolateCat} alt="chocolateCat" />
+                                    </div>
+                                    <div className="p-3">
+                                        <img src={botanasCat} alt="chocolateCat" />
+                                    </div>
+                                    <div className="p-3">
+                                        <img src={chiclesCat} alt="chocolateCat" />
+                                    </div>
+                                    <div className="p-3">
+                                        <img src={paletasCat} alt="chocolateCat" />
+                                    </div>
+                                    <div className="p-3">
+                                        <img src={bombonesCat} alt="chocolateCat" />
+                                    </div>
+                                    <div className="p-3">
+                                        <img src={galletasCat} alt="chocolateCat" />
+                                    </div>
                                 </section>
                             </Row>
                         </Col>
@@ -165,12 +179,24 @@ const IndexPage: React.FC<PageProps> = () => {
                         </Row>
                         <Row className="m-auto">
                             <section className="home-categories">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                                <div className="p-3">
+                                    <img src={chocolateCat} alt="chocolateCat" />
+                                </div>
+                                <div className="p-3">
+                                    <img src={botanasCat} alt="chocolateCat" />
+                                </div>
+                                <div className="p-3">
+                                    <img src={chiclesCat} alt="chocolateCat" />
+                                </div>
+                                <div className="p-3">
+                                    <img src={paletasCat} alt="chocolateCat" />
+                                </div>
+                                <div className="p-3">
+                                    <img src={bombonesCat} alt="chocolateCat" />
+                                </div >
+                                <div className="p-3">
+                                    <img src={galletasCat} alt="chocolateCat" />
+                                </div>
                             </section>
                         </Row>
                     </Col>

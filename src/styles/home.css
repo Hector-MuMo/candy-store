@@ -149,15 +149,28 @@ body {
     }
 }
 
-@media (min-width: 1350px) {
+@media (min-width: 1024px) {
 
-    .carousel-title-1,
-    .carousel-title-3,
-    .carousel-title-4 {
+    .carousel-title-1 {
         right: 100px;
     }
 
-    .carousel-title-2 {
+    .carousel-title-2,
+    .carousel-title-3,
+    .carousel-title-4 {
         left: 100px
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .carousel-title-1 {
+        right: 250px;
+    }
+
+    .carousel-title-2,
+    .carousel-title-3,
+    .carousel-title-4 {
+        left: 250px
     }
 }
