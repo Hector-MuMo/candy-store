@@ -13,6 +13,7 @@ const { useBreakpoint } = Grid
 const { Title } = Typography
 
 const ProductsPage = () => {
+    const { md } = useBreakpoint()
     const { products, isLoading } = useProducts(0, 10)
 
     return (
@@ -42,13 +43,13 @@ const ProductsPage = () => {
                                 </Title>
                             </div>
                             :
-                            <Col span={24} className="products-grid">
+                            <Col span={(md ? 20 : 24)} className="products-grid">
                                 {products && products.length > 0 ?
                                     products.map((product) =>
                                         <ProductCard product={product} />
                                     )
                                     :
-                                    <h2>No se pueden cargar los productos. Prueba más tarde</h2>
+                                    <Title level={1} className="m-10">No se pueden cargar los productos. Prueba más tarde</Title>
                                 }
                             </Col>
                     }

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, PageProps } from "gatsby"
+import { HeadFC, Link, PageProps } from "gatsby"
 import MainLayout from "../components/layouts/MainLayout"
 import { Carousel, Col, Row, Grid, Typography } from 'antd';
 import Zeus from "../images/logotipo-variantes/Zeus.png"
@@ -27,8 +27,7 @@ const IndexPage: React.FC<PageProps> = () => {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setLoadingCarousel(false)
-        }, 5500);
-
+        }, 1500);
         return () => clearTimeout(timer)
     }, []);
 
@@ -38,6 +37,12 @@ const IndexPage: React.FC<PageProps> = () => {
                 loadingCarousel ?
                     <Row className="my-10" align="middle" justify="center">
                         <img className="rounded-lg" src={loader} alt="loader" />
+                        <Title
+                            level={2}
+                            style={{ marginLeft: "25px", color: "#4d1227", fontFamily: "Playfair Display, serif", textAlign: "end" }}
+                        >
+                            Cargando...
+                        </Title>
                     </Row>
                     :
                     <Row>
@@ -88,16 +93,18 @@ const IndexPage: React.FC<PageProps> = () => {
                                     return (
                                         <div className="max-w-[150px] flex flex-col items-center my-3 text-center mx-3">
                                             <figure className="flex items-center p-5 mb-2 w-[150px] h-[150px]" style={{ backgroundColor: "white", border: "10px solid #4d1227", color: "white", borderRadius: "50%" }}>
-                                                <img src={product.imgs[0]} alt={product.name} />
+                                                <Link to={`/products/${product.id}`}>
+                                                    <img src={product.imgs[0]} alt={product.name} />
+                                                </Link>
                                             </figure>
-                                            <p style={{ width: "100%", backgroundColor: "#4d1227", color: "white" }} className="mb-2 p-3">
+                                            <p style={{ width: "100%", minHeight: "90px", backgroundColor: "#4d1227", color: "white", fontFamily: "Bebas Neue, sanserif", fontSize: "16px" }} className="mb-2 p-3">
                                                 {product.name}
                                             </p>
                                             <div className="m-auto w-[100px]">
-                                                <span style={{ backgroundColor: "#4d1227", color: "white" }} className="block mb-2 p-1" >
+                                                <span style={{ backgroundColor: "#4d1227", color: "white", fontFamily: "Bebas Neue, sanserif", fontSize: "16px" }} className="block mb-2 p-1" >
                                                     {product.brand}
                                                 </span>
-                                                <p className="bg-green-300 text-white p-2">
+                                                <p className="bg-green-300 text-white p-2" style={{ fontFamily: "Bebas Neue, sanserif", fontSize: "16px" }}>
                                                     ${product.price}
                                                 </p>
                                             </div>

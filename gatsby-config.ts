@@ -28,17 +28,17 @@ const config: GatsbyConfig = {
         },
         'gatsby-plugin-postcss',
         'gatsby-plugin-netlify',
-        {
-            resolve: `gatsby-plugin-google-fonts`,
-            options: {
-                fonts: [
-                    `Playfair Display pro\:300,400,400i,700`,
-                    `Bebas Neue`,
-                    `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
-                ],
-                display: 'swap'
-            }
-        },
+        /*         {
+                    resolve: `gatsby-plugin-google-fonts`,
+                    options: {
+                        fonts: [
+                            `Playfair Display pro\:300,400,400i,700`,
+                            `Bebas Neue`,
+                            `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+                        ],
+                        display: 'swap'
+                    }
+                }, */
         {
             resolve: `gatsby-omni-font-loader`,
             options: {
