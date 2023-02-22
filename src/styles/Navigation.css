@@ -5,9 +5,8 @@ html {
 }
 
 body {
-    font-size: "Bebas Neue", sanserif;
+    font-family: "Bebas Neue", sanserif;
 }
-
 
 .main-container {
     min-height: calc(100vh - 60px);
@@ -88,6 +87,10 @@ body {
 .barsBtn:after {
     top: auto;
     bottom: -6px;
+}
+
+.ant-menu-title-content {
+    text-align: center;
 }
 
 .ant-drawer-body {

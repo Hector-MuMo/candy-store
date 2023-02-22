@@ -39,12 +39,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {contextHolder}
             {product ?
                 <Card
+                    className='product-card-container'
                     key={product.id}
                     cover={<img style={{ width: "150px" }} src={product.imgs[0]} alt={product.name} />}
                     actions={[
                         <Button icon={<PlusOutlined />} onClick={handleAddProduct}>Agregar al carrito</Button>
                     ]}
-                    title={<Link to={`/products/${product.id}`}>{product.name}</Link>}
+                    title={<Link to={`/products/${product.id}`} className="break-all">{product.name}</Link>}
                 >
                     <Meta title={`$${product.price}`} description={product.category} />
                 </Card>

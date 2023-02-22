@@ -16,6 +16,9 @@ export const productsInCarSlice = createSlice({
         productsList: []
     },
     reducers: {
+        getLocalStorageCar: (state, action) => {
+            state.productsList = action.payload
+        },
         addProduct: (state: ProductsInCarReducer, action) => {
             const isProductInCar = state.productsList.find((product: Product) => product.id === action.payload.id ? true : false)
             if (!isProductInCar) {
@@ -41,7 +44,7 @@ export const productsInCarSlice = createSlice({
     }
 })
 
-export const { addProduct, deleteProduct, updateBuyingAmount } = productsInCarSlice.actions
+export const { getLocalStorageCar, addProduct, deleteProduct, updateBuyingAmount } = productsInCarSlice.actions
 
 export const selectProductsInCar = (state: ProductsInCarSelector) => state.productsInCar.productsList
 
