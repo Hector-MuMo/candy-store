@@ -1,9 +1,20 @@
 import React from 'react'
 import ordersApi from '.';
 
+interface OrderActions {
+    created?: Boolean,
+    updated?: Boolean,
+    deleted?: Boolean,
+}
+
 const useOrders = (page?: number, limit?: number) => {
     const [orders, setOrders] = React.useState([]);
     const [order, setOrder] = React.useState();
+    const [orderActions, setOrderActions] = React.useState<OrderActions>({
+        created: false,
+        updated: false,
+        deleted: false,
+    });
     const [isLoading, setIsLoading] = React.useState(false);
     const [errors, setErrors] = React.useState({
         ordersError: "",
@@ -40,6 +51,20 @@ const useOrders = (page?: number, limit?: number) => {
         }
     }
 
+    const createOrder = async (order: Order) => {
+        try {
+            const result = await ordersApi().create(order)
+            if (result.data && result.data.message) {
+                setOrderActions({
+                    ...orderActions,
+                    created: true
+                })
+            }
+        } catch (error) {
+            console.log("Error al crear la orden 😔", error)
+        }
+    }
+
     React.useEffect(() => {
         getOrders()
     }, []);
@@ -48,7 +73,8 @@ const useOrders = (page?: number, limit?: number) => {
         orders,
         order,
         isLoading,
-        getOrder
+        getOrder,
+        createOrder
     }
 }
 
